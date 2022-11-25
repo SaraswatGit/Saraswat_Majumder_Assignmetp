@@ -24,7 +24,7 @@
         //These Javascript Object contains validation rules to followed
         {
           field: "Name",
-          validator: { required: true, minlen: 4, maxlen: 10 }
+          validator: { required: true, minlen: 4, maxlen: 20 }
         },
         {
           field: "E-mail",
@@ -49,7 +49,7 @@
         let msg = JSON.parse(event.data);
         let errElement = document.getElementById("erm");
         errElement.style.color = "red";
-
+        errElement.innerHTML = "";
         for (
           let i = 0;
           i < validators.length;
@@ -69,13 +69,14 @@
           }
           if (validations.minlen != undefined) {
             if (userInput.length < validations.minlen) {
+              console.log(userInput);
               errElement.innerHTML = `Error : The ${formField} should be atleast ${validations.minlen} character long !`;
               break;
             }
           }
           if (validations.maxlen != undefined) {
             if (userInput.length > validations.maxlen) {
-              errElement.innerHTML = `Error : The ${formField} should be less than ${validations.minlen} characters !`;
+              errElement.innerHTML = `Error : The ${formField} should be less than ${validations.maxlen} characters !`;
               break;
             }
           }
