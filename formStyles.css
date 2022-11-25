@@ -1,0 +1,23 @@
+.formParent{
+  background-color: lightgray;
+  padding: 1.5VW;
+  height: max-content;
+  font-weight: 700;
+
+}
+.form{
+  font-size: 4vh;
+
+  height: max-content;
+}
+.detailDiv
+{
+margin-top: 2vh;
+font-size: 4vh;
+}
+.btn
+{
+  margin-top: 2vh;
+  background-color: aqua;
+  padding: 1.5vh;
+}

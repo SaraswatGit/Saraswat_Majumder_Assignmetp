@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Netomi Assignment</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="Parent">
+      <iframe
+        class="detailsForm"
+        src="./form.html"
+        width="30vw"
+        height="70vh"
+        frameborder="1"
+      ></iframe>
+      <p id="erm"></p>
+      <!-- Error Message will be displayed here -->
+    </div>
+
+    .
+
+    <script>
+      const validators = [
+        //These Javascript Object contains validation rules to followed
+        {
+          field: "Name",
+          validator: { required: true, minlen: 4, maxlen: 10 }
+        },
+        {
+          field: "E-mail",
+          validator: {
+            pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+          } // regex for email validation .
+        },
+        {
+          field: "Phone Number",
+          validator: { minlen: 10, maxlen: 10 }
+        },
+        {
+          field: "Country",
+          validator: { required: true }
+        },
+        {
+          field: "State",
+          validator: { required: true }
+        }
+      ];
+      window.addEventListener("message", function (event) {
+        let msg = JSON.parse(event.data);
+        let errElement = document.getElementById("erm");
+        errElement.style.color = "red";
+
+        for (
+          let i = 0;
+          i < validators.length;
+          i++ // checking all validation rules by looping
+        ) {
+          let formField = validators[i].field;
+          let validations = validators[i].validator;
+          let userInput = msg[formField];
+          if (
+            validations.required != undefined &&
+            validations.required == true
+          ) {
+            if (userInput == "") {
+              errElement.innerHTML = `Error : The ${formField} is a required field ! `;
+              break;
+            }
+          }
+          if (validations.minlen != undefined) {
+            if (userInput.length < validations.minlen) {
+              errElement.innerHTML = `Error : The ${formField} should be atleast ${validations.minlen} character long !`;
+              break;
+            }
+          }
+          if (validations.maxlen != undefined) {
+            if (userInput.length > validations.maxlen) {
+              errElement.innerHTML = `Error : The ${formField} should be less than ${validations.minlen} characters !`;
+              break;
+            }
+          }
+          if (validations.pattern != undefined) {
+            if (!validations.pattern.test(userInput)) {
+              errElement.innerHTML = `Error : The format of ${formField} is wrong ! `;
+              break;
+            }
+          }
+        }
+        if (errElement.innerHTML == "") {
+          errElement.style.color = "green"; //changing color of the error message if no error is found
+          errElement.innerHTML = `Success : All Fields are Valid !`;
+        }
+      });
+    </script>
+  </body>
+</html>
