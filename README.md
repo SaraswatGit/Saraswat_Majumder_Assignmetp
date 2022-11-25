@@ -2,12 +2,12 @@
 
 ## Description of the Project
 
-##Fetching from the API
+## Fetching from the API
 
 A Single Api call is made only when the component loads for the first time .
 We store States to each country using a map . And remove and append child in the State select object whenever the country is changed .
 
-##Validating the data
+## Validating the data
 The Iframe component sends data to its parent using the `Windows.Postmessage` feeature .
 The Parent of receiving the message validates it using Pre-Written Javascript array of objects :
 
