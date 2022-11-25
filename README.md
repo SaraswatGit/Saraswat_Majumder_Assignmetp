@@ -10,10 +10,11 @@ We store States to each country using a map . And remove and append child in the
 ## Validating the data
 The Iframe component sends data to its parent using the `Windows.Postmessage` feature  : 
 eg : 
-```    window.parent.postMessage(JSON.stringify(formvalues), "*");
+```   
+ window.parent.postMessage(JSON.stringify(formvalues), "*");
 ```
- feeature .
-The Parent of receiving the message validates it using Pre-Written Javascript array of objects :
+
+The Parent of the iframe validates it using Pre-Written Javascript array of objects :
 
 ```
       const validators =[
