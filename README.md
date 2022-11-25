@@ -62,6 +62,9 @@ The Parent of the iframe validates it using Pre-Written Javascript array of obje
 ]
 ```
 ## How to run the project : 
+
 1)You can download and extract the zip
+
 2)Copy the file path . 
+
 3)Paste the file path on the browser seach bar and hit enter . 
