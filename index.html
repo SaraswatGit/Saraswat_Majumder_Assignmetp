@@ -50,11 +50,8 @@
         let errElement = document.getElementById("erm");
         errElement.style.color = "red";
         errElement.innerHTML = "";
-        for (
-          let i = 0;
-          i < validators.length;
-          i++ // checking all validation rules by looping
-        ) {
+        for ( let i = 0; i < validators.length;  i++) // checking all validation rules by looping
+        {
           let formField = validators[i].field;
           let validations = validators[i].validator;
           let userInput = msg[formField];
@@ -67,7 +64,7 @@
               break;
             }
           }
-           if(userInput== ""
+           if(userInput== "")
               {
               continue;}
           if (validations.minlen != undefined) {
